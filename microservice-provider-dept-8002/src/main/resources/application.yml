@@ -1,0 +1,37 @@
+server:
+  port: 8002
+mybatis:
+  config-location: classpath:mybatis/mybatis.xml
+  type-aliases-package: com.qc.micro.entity           #所有entity别名所在包(在mapper.xml文件中就不需要全类名了)
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*Mapper.xml           #mapper映射文件
+spring:
+  application:
+    name: microservice-provider-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB02?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5                                      # 数据库连接池的最小维持连接数
+      initial-size: 5                                  # 初始化连接数
+      max-total: 5                                     # 最大连接数
+      max-wait-millis: 200                             # 等待连接获取的最大超时时间
+      test-while-idle: true
+      test-on-borrow: false
+      validation-query: select 1
+eureka:
+  client:                                              # 客户端注册进eureka服务列表
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: microservice-provider-dept-8002       # 让eureka中status的名称按自定义显示
+    prefer-ip-address: true                            # 让eureka中status访问路径可以显示ip地址
+
+info:                                                  # 在eureka界面中status点击链接看到的信息（细节）
+  app.name: microservice-provider-dept-8002
+  company.name: 青菜网络科技有限公司
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
