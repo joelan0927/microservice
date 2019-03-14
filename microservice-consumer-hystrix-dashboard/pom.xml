@@ -10,19 +10,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.qc.cloud</groupId>
-    <artifactId>microservice-consumer-util</artifactId>
-    <dependencies>
+    <artifactId>microservice-consumer-hystrix-dashboard</artifactId>
 
+    <dependencies>
         <dependency>
             <groupId>com.qc.cloud</groupId>
-            <artifactId>microservice-common-util</artifactId>
+            <artifactId>microservice-consumer-util</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
-        <!-- Ribbon需要跟eureka整合,eureka与config关联 -->
+        <!-- hystrix和 hystrix-dashboard相关 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-ribbon</artifactId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
         </dependency>
     </dependencies>
 

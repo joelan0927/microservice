@@ -1,0 +1,28 @@
+server:
+  port: 1001
+
+spring:
+  application:
+    name: microservice-zuul-gateway
+
+eureka:
+  client:                                              # 客户端注册进eureka服务列表
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: microservice-zuul-gateway-1001        # 让eureka中status的名称按自定义显示
+    prefer-ip-address: true                            # 让eureka中status访问路径可以显示ip地址
+
+zuul:
+#  prefix: /qc                                          # 可以加前缀
+  ignored-services: microservice-provider-dept         # 忽略真实服务名
+  routes:
+    mydept.serviceId: microservice-provider-dept       # 此配置将此服务名用下面的path代替
+    mydept.path: /mydept/**
+
+info:                                                  # 在eureka界面中status点击链接看到的信息（细节）
+  app.name: microservice-zuul-gateway-1001
+  company.name: 青菜网络科技有限公司
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+

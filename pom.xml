@@ -17,6 +17,9 @@
         <module>microservice-provider-dept-8003</module>
         <module>microservice-bean</module>
         <module>microservice-consumer-dept-feign-80</module>
+        <module>microservice-provider-dept-hystrix-8001</module>
+        <module>microservice-consumer-hystrix-dashboard</module>
+        <module>microservice-zuul-gateway-1001</module>
     </modules>
 
     <parent>

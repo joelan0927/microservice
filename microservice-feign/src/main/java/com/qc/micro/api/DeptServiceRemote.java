@@ -13,7 +13,8 @@ import java.util.List;
  * @author 蓝少宾
  * @create 2019-03-14 0:25
  */
-@FeignClient(value = "MICROSERVICE-PROVIDER-DEPT")
+//使用服务降级
+@FeignClient(value = "MICROSERVICE-PROVIDER-DEPT",fallbackFactory = DeptServiceFallbackFactory.class)
 public interface DeptServiceRemote {
 
     @RequestMapping(value = "/dept/add",method = RequestMethod.POST)
